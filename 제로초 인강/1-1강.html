@@ -19,11 +19,21 @@
             display: inline-block;   /*가운데 정렬*/
             background-color: yellow;
         }
+        #header{
+            text-align: left;
+        }
         #header-hamburger{
             margin-top : 18px;
-            background-color: blue;
-            width: 47.99px;
-            height: 47.99px;
+            padding : 8px; /*padding 주고 싶으면 부모한테 주면 됨*/
+            display: inline-block;
+        }
+        #header-hamburger > div{
+            background-image: url(./sp_main.png);
+            width: 31.99px;
+            height: 31.99px;
+            background-position: -311px -166px;
+            background-size: 452px 436px;
+            background-repeat: no-repeat;
         }
         #main{
             height : 2000px;
@@ -34,8 +44,11 @@
 <body>
     <div id = "wrap">
         <div id ="wrap-center">
-            <div id="header"></div>
-                <div id="header-hamburger"></div>
+            <div id="header">
+                <div id="header-hamburger">
+                    <div></div> <!--자식 태그 추가-->
+                </div>
+            </div>
             <div id="search"></div>
             <div id="nav"></div>
             <div id="main"></div>
