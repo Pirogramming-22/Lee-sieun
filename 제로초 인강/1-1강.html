@@ -797,11 +797,22 @@
                     margin-left: auto;
                     padding: 10px 0;
                 }
+                #main-shopping-grid{
+                    display: grid;
+                    grid-auto-flow: column;
+                    margin-top: 20px;
+                    grid-template-rows: 90px 95px 185px;
+                    grid-template-columns: 1fr 1fr 1fr 1fr 250px;
+                    column-gap:20px;
+                    
+                }
+                .item:nth-child(1),.item:nth-child(2),.item:nth-child(3),.item:nth-child(4){
+                    grid-row: 1/ span 2;
+                }
             </style>
             <main id="main">
                 <div id="main-left">
                     <aside id ="main-left-ad"> </aside>
-                   
                     <section id="main-newstand" class="left-section">
                         <div id="main-newstand-top">
                             <header>
@@ -875,7 +886,7 @@
                         <div id="main-shopping-gray">
                                 <div class="left">
                                     <a href="#">오늘의 혜택</a>
-                                    <div id="main-newstand-animation">
+                                    <div id="main-shopping-animation">
                                     <a href="#">제로초, 배고파 제로초, 배고파 제로초, 배고파 제로초, 배고파 제로초, 배고파 제로초, 배고파</a>
                                     </div>
                                 </div>
@@ -887,6 +898,17 @@
                                 </div>
                             </div>
                         <div id="main-shopping-grid">
+                            <div class="item">1</div>
+                            <div class="item">2</div>
+                            <div class="item">3</div>
+                            <div class="item">4</div>
+                            <div class="item">5</div>
+                            <div class="item">6</div>
+                            <div class="item">7</div>
+                            <div class="item">8</div>
+                            <div class="item">9</div>
+                            <div class="item">10</div>
+                            <div class="item">11</div>
                         </div>
                     
                         <footer>
