@@ -73,19 +73,29 @@
         }
         #header{
             text-align: left;
+            position:relative;
         }
         #header-hamburger{
-            margin-top : 18px;
+            position: absolute;
+            top: 18px;
+            left : -8px;
             padding : 8px; /*padding 주고 싶으면 부모한테 주면 됨*/
             display: inline-block;
             background: none; /*button으로 바꿔서 생기는 배경 제거*/
             border: none;
             cursor : pointer;
         }
-        #header-hamburger:hover{
+        #header-hamburger:hover::before{
+            content: '';
+            position: absolute;
+            left: 1px;
+            top: 1px;
+            width: 48px;
+            height: 48px;
             background-color: var(--color_option_bg);
             border-radius: 50%;
         }
+ 
         #header-hamburger > div{
             background-image: url(./sp_main.png);
             width: 31.99px;
