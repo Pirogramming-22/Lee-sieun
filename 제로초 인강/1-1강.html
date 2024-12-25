@@ -7,29 +7,37 @@
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico?1"> 
     <title>NAVER</title>
     <style>
+      *{
+            box-sizing: border-box;
+        }
+        html, body, form{  /*상단 여백 제거*/
+            margin: 0;
+            padding: 0;
+        } 
         #wrap{
             text-align : center
         }
         #wrap-center{
             width: 1280px;
+            display: inline-block;   /*가운데 정렬*/
             background-color: yellow;
         }
         #header{
             text-align: left;
+            position:relative;
+            height:64px;
         }
-        #header-hamburger{
+        #header-hamburger, #header-naverpay, #header-notice{ /*공통된 부분 모으기*/
             position: absolute;
             top: 18px;
             padding : 8px; /*padding 주고 싶으면 부모한테 주면 됨*/
             display: inline-block;
-            background-repeat: no-repeat;
-            background-size: 422px 405px;
-            background-position: -311px -166px;
+            background: none; /*button으로 바꿔서 생기는 배경 제거*/
             border: none;
             cursor : pointer;
         }
-         
-        #header-hamburger:hover::before{
+
+        #header-hamburger:hover::before,    #header-naverpay:hover::before,    #header-notice:hover::before{
             position: absolute;
             content: '';
             z-index: 0; /*형제끼리만 적용됨*/
@@ -40,27 +48,41 @@
             background-color: var(--color_option_bg);
             border-radius: 50%;
         }
-        #header-hamburger:hover{
-            background-color: var(--color_option_bg);
-            border-radius: 50%;
-        }
-        #header-hamburger:hover > div{
-            position:relative;
-            left : 1px;
-            top: 1px;
-        }
 
-        #header-hamburger > div{
+        #header-hamburger > div, #header-naverpay > div,#header-notice > div{
             background-image: url(./sp_main.png);
             width: 31.99px;
             height: 31.99px;
-            z-index: 1;
             position: relative;
+            z-index: 1;
             background-size: 452px 436px;
-            background-position: -311px -166px;
             background-repeat: no-repeat;
         }
+        #header-hamburger{
+            left : -8px;
+        }
 
+        #header-hamburger > div{
+            background-position: -311px -166px;
+        }
+
+        #header-naverpay{
+            right : 42px;
+            padding: 10px 8px; /*naverpay만 다르니까 overriding & 위에보다 아래에 위치해야함함*/
+        }
+ 
+        #header-naverpay > div{
+            background-position: -248px -260px;
+        }
+
+        #header-notice{
+            right : -9px;
+        }
+ 
+        #header-notice > div{
+            background-position: -311px -232px;
+        }
+        
         #main{
             height : 2000px;
         }
@@ -74,19 +96,30 @@
         }
         
 
+
     </style>
 
 </head>
 <body>
     <div id = "wrap">
         <div id ="wrap-center">
-            <div id="header"></div>
-            <button id="header-hamburger">
-                <!--::before-->
-                <div></div> <!--자식 태그 추가-->
-                <span class="blind">확장 영역</span>
-            </button>
-
+            <div id="header">
+                <button id="header-hamburger">
+                    <!--::before-->
+                    <div></div> <!--자식 태그 추가-->
+                    <span class="blind">확장 영역</span>
+                </button>
+                <button id="header-naverpay">
+                    <!--::before-->
+                    <div></div> <!--자식 태그 추가-->
+                    <span class="blind">네이버 페이이</span>
+                </button>
+                <button id="header-notice">
+                    <!--::before-->
+                    <div></div> <!--자식 태그 추가-->
+                    <span class="blind">알림</span>
+                </button>
+            </div>
             <div id="search"></div>
             <div id="nav"></div>
             <div id="main"></div>
