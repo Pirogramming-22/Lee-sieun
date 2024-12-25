@@ -14,19 +14,33 @@
             width: 1280px;
             background-color: yellow;
         }
-        #main{
-            height : 2000px;
+        #header{
+            text-align: left;
         }
         #header-hamburger{
             position: absolute;
             top: 18px;
             padding : 8px; /*padding 주고 싶으면 부모한테 주면 됨*/
             display: inline-block;
-            background: none; /*button으로 바꿔서 생기는 배경 제거*/
+            background-repeat: no-repeat;
+            background-size: 422px 405px;
+            background-position: -322px -284px;
             border: none;
             cursor : pointer;
         }
+        #header-hamburger > div{
+            background-image: url(./sp_main.png);
+            width: 31.99px;
+            height: 31.99px;
+            position: relative;
+            background-size: 452px 436px;
+            background-repeat: no-repeat;
+        }
 
+
+        #main{
+            height : 2000px;
+        }
 
 
     </style>
@@ -37,7 +51,7 @@
         <div id ="wrap-center">
             <div id="header"></div>
                 <div id="header-hamburger">
-
+                    <div></div> <!--자식 태그 추가-->
                 </div>
             <div id="search"></div>
             <div id="nav"></div>
