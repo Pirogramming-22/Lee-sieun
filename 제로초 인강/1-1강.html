@@ -24,23 +24,40 @@
             display: inline-block;
             background-repeat: no-repeat;
             background-size: 422px 405px;
-            background-position: -322px -284px;
+            background-position: -311px -166px;
             border: none;
             cursor : pointer;
+        }
+         
+        #header-hamburger:hover::before{
+            position: absolute;
+            content: '';
+            left: 1px;
+            top: 1px;
+            width: 48px;
+            height: 48px;
+            background-color: var(--color_option_bg);
+            border-radius: 50%;
         }
         #header-hamburger:hover{
             background-color: var(--color_option_bg);
             border-radius: 50%;
         }
+        #header-hamburger:hover > div{
+            position:relative;
+            left : 1px;
+            top: 1px;
+        }
+
         #header-hamburger > div{
             background-image: url(./sp_main.png);
             width: 31.99px;
             height: 31.99px;
             position: relative;
             background-size: 452px 436px;
+            background-position: -311px -166px;
             background-repeat: no-repeat;
         }
-
 
         #main{
             height : 2000px;
