@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Signup</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d1117;
+            color: white;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #161b22;
+        }
+ 
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .github{
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            padding-left: 35px;
+        }
+        .github::before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            background: url('./github_logo.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            transform: translateY(-50%);
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .navbar a.down, .github{
+            position: relative;
+            padding-right: 20px;
+        }
+        .navbar a.down::after, .github::after{
+            content: '';
+            position:absolute;
+            right: 0;
+            top: 25%;
+            width: 10px;
+            height: 10px;
+            background: url('./down.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .search{
+            display: flex;
+            justify-content: center;
+            margin-right: 20px;
+        }
+        .search input{
+            width: 200px;
+            padding: 8px 12px;
+            border: 1px solid #696969;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #f6f8fa;
+        }
+        .search input:focus {
+            outline: none;
+            border-color: #696969;
+        }
+        .navbar .right a {
+            font-weight: bold;
+        }
+
+        /* main 글씨씨 */
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 50px;
+        }
+
+        .left-section {
+            max-width: 50%;
+        }
+
+        .left-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .left-section p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #696969;
+        }
+        .left-section .highlight{
+            color: white;
+            font-weight: bold;
+        }
+
+        /* 로그인 form */
+        .right-section {
+            background-color: #f6f8fa;
+            color: black;
+            padding: 30px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .right-section input[type="text"],
+        .right-section input[type="email"],
+        .right-section input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #d1d5da;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .right-section input[type="text"]:focus,
+        .right-section input[type="email"]:focus,
+        .right-section input[type="password"]:focus {
+            background-color: #e3e6eb;
+            outline: none;
+            border-color: #0366d6;
+        }
+
+        .right-section button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .right-section button:hover {
+            background-color: #218838;
+        }
+
+        .right-section p {
+            font-size: 12px;
+            color: #586069;
+            margin-top: 20px;
+        }
+
+        .right-section p a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .right-section p a:hover {
+            text-decoration: underline;
+        }
+
+
+
+        /* Footer 이미지*/
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+            background-color: white;
+            background-image: url('./footer.png');
+            background-size: contain;
+            background-position: right;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 300px;
+        }
+
+        .footer img {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="left">
+            <a href="#" class="github">Why GitHub?</a>
+            <a href="#">Team</a>
+            <a href="#">Enterprise</a>
+            <a href="#" class="down">Explore</a>
+            <a href="#">Marketplace</a>
+            <a href="#" class="down">Pricing</a>
+        </div>
+        <div class="right">
+            <div class="search">
+                <input type="text" placeholder="Search GitHub">
+            </div>
+            <a href="#">Sign in</a>
+            <a href="#">Sign up</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="left-section">
+            <h1>Built for </h1>
+            <h1>developers</h1>
+            <p>GitHub is a development platform inspired by the way you work. From <span class="highlight">open source</span> to <span class="highlight">business</span>, you can host and review code, manage projects, and build software alongside 50 million developers.</p>
+        </div>
+        <div class="right-section">
+            <form>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Username">
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password">
+
+                <button type="submit">Sign up for GitHub</button>
+            </form>
+            <p>By clicking "Sign up for GitHub", you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Statement</a>.</p>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <div class="footer">
+    </div>
+</body>
+</html>
