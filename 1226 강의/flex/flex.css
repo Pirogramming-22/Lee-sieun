@@ -1,0 +1,46 @@
+/* .flex-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center; /*수직방향정렬*/
+    /* flex-wrap: wrap;  /*넘치면 밑으로 내려가게 설정*/
+    /* background-color: aliceblue;
+    padding: 20px;
+} */ 
+
+.resposive-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+    padding: 20px;
+}
+
+.resposive-container::after{
+    background-color: blue;
+    color: red;
+    padding: 20px;
+    text-align: center;
+    margin: 10px
+}
+
+.flex-item{
+    flex: 1 1 calc(33.33%-60px); /*flex-flow(비율에 맞춰 확장), flex-shrink(1이상이면 공간이 부족할 때 작아짐), flex-basis*/
+    background-color: blue;
+    color: red;
+    padding: 20px;
+    text-align: center;
+    margin: 10px;
+}
+
+@media (max-width: 768px){ /*태블릿 기준*/
+    .flex-item{
+        flex: 1 1 calc(50%-60px);
+    }
+}
+
+@media(max-width: 481px){ /*모바일 기준*/
+    .flex-item{
+        flex: 1 1 calc(100%);
+    }
+}
