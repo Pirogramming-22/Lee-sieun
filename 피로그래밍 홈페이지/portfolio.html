@@ -47,17 +47,20 @@ html, body{
     background-color: black;
     margin: 0;
     padding: 0;
-    line-height: 1;
+    height: 100%;
     font-family: "Nexon", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 #wrap{
     text-align: center;
+    flex-direction: column;
+    min-height: 100vh;
 }
 #wrap-center{
+    flex:1;
     position: relative;
     justify-content: center;
     width: 1200px;
-    height: 1144px;
+    height: au;
     padding: 0 40px;
     margin: auto;
     border: 0;

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://piro-homepage-bucket.s3.ap-northeast-2.amazonaws.com/images/favicons/favicon-16x16.png">
+    <title>피로그래밍</title>
+    <style>
+        :root {
+    --black: #000;
+    --bg-3: rgb(222, 222, 222);
+    --bg-5: rgba(236, 236, 236, 0.466);
+    --bg-gray: #333333;
+    --scroll-bar-gray: #222222;
+    --line-gray: #606060;
+    --white: #fff;
+    --subtext-gray: #c6c6c6;
+    --green-1: #0bec12;
+    --green-2: rgba(73, 191, 77, 0.8);
+    --green-3: rgba(73, 191, 77, 0.6);
+    --blue: #2188b6;
+    --red: #c54422;
+    --badge-green: #35a67b;
+    --hero: 8rem;
+    --heading1: 3.8rem;
+    --heading2: 2.8rem;
+    --heading3: 2.2rem;
+    --subheading: 1.8rem;
+    --body1: 1.6rem;
+    --body2: 1.4rem;
+    --caption: 1.2rem;
+    --weight1: 400;
+    --weight2: 500;
+    --weight3: 700;
+    --offset: 40px;
+    --gutter: 16px;
+    --border-r: 8px;
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --transition: 0.15s;
+    --header-height: 9rem;
+}
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Nexon", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+#wrap{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+#wrap-center{
+    width: 1200px;
+    flex:1;
+    position: relative;
+    justify-content: center;
+    height: auto;
+    margin: auto;
+    padding: 0 40px;
+    border: 0;
+    background-color:black;
+}
+#header{
+    position: fixed;
+    display: grid;
+    vertical-align: center;
+    width: 1200px;
+    height: 90px;
+    grid-template-columns: 0.5fr 5fr 4.5fr;
+    margin :0;
+    padding:0;
+    left:0;
+}
+#logo{
+    background-image: url('./logo.svg');
+    height: 40px;
+    width: 40px;
+    margin: 20px 0;
+    border: 0;
+}
+#nav ul{
+    list-style: none;
+    display: flex;
+}
+#nav li{
+    margin: 15px;
+}
+#nav a{
+    text-decoration: none;
+    font-weight: Bold ;
+    color : white;
+    font-size: 20px;
+    text-wrap: nowrap;
+}
+#nav li:nth-child(3) a{
+    color:#0bec12;
+}
+    </style>
+</head>
+
+
+<body>
+    <div id="wrap">
+        <div id="wrap-center">
+            <!--header-->
+            <div id="header">
+                <div id="logo">
+                </div>
+                <div></div>
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li> 
+                            <a href="#">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#">Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="#">Interview</a>
+                        </li>
+                        <li>
+                            <a href="#">Gallery</a>
+                        </li>
+                        <li>
+                            <a href="#">Recruit</a>
+                        </li>                    
+                    </ul>
+                </nav>                
+            </div>
+        
+            <!--main-->
+            <style>
+                #main{
+                    width: 100%;
+                    max-width: 1400px;
+                    max-width: 1400px;
+                    min-height: 100vh;
+                    padding: 90px 40px;
+                    margin: auto;
+                    display: flex;
+                    flex-direction: column;
+                    background-color: black;
+                }
+                #section{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width :100%;
+                    height : 40px;
+                    margin: 0 0 16px;
+                    font-size: 1.5rem;
+                    position: relative;
+
+                }
+                #now{
+                    flex :1;
+                    text-align: center;
+                    color:white;
+                }
+                #prev {
+                    text-align: right;
+                    margin-right: 0;
+                    color : white;
+                    font-size: 1.2rem;
+                }
+                #prev i{
+                    margin-left: 5px;
+                }
+                #Interview, #interview-grid{
+                    display: grid;
+                    grid-template-columns: repeat(3,1fr);
+                    gap:20px
+                }
+                .grids{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-start;
+                    width: 250%;
+                    height: auto;
+                    margin:0;
+                    background-color: var(--bg-gray);
+                    border-radius: 10px;
+                    padding: 20px;
+                    text-align: center;
+                    color: white;
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                .grids:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+               }
+
+                .profile{
+                    /* display: flex;
+                    justify-self: flex-start;; */
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    margin-bottom: 10px;
+                    margin-right: 20px;
+                    transition: transform 0.3s ease;
+                }
+                .grids:hover .profile {
+                    transform: scale(1.1);
+                }
+                .name, .box, .major,.description{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                .name {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    margin: 5px 0;
+                }
+                .box {
+                    display: inline-block;
+                    padding: 5px 10px;
+                    font-size: 0.9rem;
+                    border-radius: 5px;
+                    margin-bottom: 10px;
+                }
+                .major{
+                    background-color: #2188b6;
+                    color: white;
+                }
+                .description {
+                    font-size: 0.9rem;
+                    margin: 10px 0;
+                }
+                .hamburger {
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    transition: transform 0.3s ease;
+                }
+                .grids:hover .hamburger {
+                    transform: scale(0.9);
+                }
+            </style>
+            <div id="main">
+                <div id="section">
+                    <div id="now">21기</div>
+                    <div id="prev">20기<i>&gt;</i></div>
+                </div>
+                <div id="Interview">
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    <div id="interview-grid">
+                        <div class="grids">
+                            <img src="images/logo.svg" class="profile">
+                            <h3 class="name">강민석</h3>
+                            <span class="box major">전공자</span>
+                            <p class="description">어? 금지</p>
+                            <div class="hamburger">☰</div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+            <style>
+                .footer{
+                    margin-top: auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 190px;
+                    background-color: var(--bg-gray);
+                    font-size: var(--body2);
+                }
+                #footer-top{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 40px 40px;
+                    width: 100%;
+                    height: 110px;
+                }
+                #footer-left{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    /* justify-content: space-between; */
+                    gap :10px;
+                    /* font-size: 1rem; */
+                }   
+                .rule{
+                    text-align: left;
+                    font-size: 1rem;
+                    color: white;
+                    margin: 0;
+                }
+
+                .icon{
+                    display: flex;
+                    gap: 10px;
+                }
+                .img{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    background-color: black;
+                    position: relative;
+                }
+                .img img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                #mail p{
+                    text-align: left;
+                    font-size: 1rem;
+                    color:white;
+                    margin-top: 0;
+                }
+                #footer-right{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap : 10px;
+                }
+                #footer-right a{
+                    color: white;
+                    text-decoration: none;
+                    font-size: 1.3rem;
+                    position: relative;
+                }
+                #footer-right a::after{
+                content: "|";
+                color :white;
+                margin-left : 10px;
+                }
+                #footer-right a:last-child::after {
+                    content: ""; 
+                }
+                #footer-bottom{
+                opacity: 0.8;
+                font-size: var(--caption);
+                text-align: center;
+                padding: var(--gutter);
+                }
+                #footer-bottom span{
+                    color: white;
+                    font-size: 1rem;
+                }
+            </style>
+            <!--footer-->
+            <div class="footer">
+                <div id="footer-top">
+                    <div id="footer-left">
+                        <div class="rule">PIROGRAMMING 회칙 ></div>
+                        <div class="icon">
+
+                                <div class ="img">
+                                    <img src="https://piro-homepage-bucket.s3.ap-northeast-2.amazonaws.com/images/icons/kakao.svg" alt="kakao">
+                                </div>
+
+                                <div class ="img">
+                                    <img src="https://piro-homepage-bucket.s3.ap-northeast-2.amazonaws.com/images/icons/github.svg" alt="github">
+                                </div>
+
+                                <div class ="img">
+                                    <img src="https://piro-homepage-bucket.s3.ap-northeast-2.amazonaws.com/images/icons/instagram.svg" alt="instagram">
+                                </div>
+                        </div>
+                        <div id="mail">
+                            <p>pirogramming.official@gamil.com</p>
+                        </div>
+                    </div>
+                    <div id="footer-right">
+                        <a>Home</a>
+                        <a>About Us</a>
+                        <a>Portfolio</a>
+                        <a>Interview</a>
+                        <a>Recruit</a>
+                    </div>
+                </div>
+                <div id="footer-bottom">
+                    <span>Priogramming.2023 All rights reserved.</span>
+                </div>
+            </div>
+        
+    </div>
+    <style>
+        @media (max-width: 1400px) {
+
+        #wrap-center {
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        #header {
+            grid-template-columns: 1fr 4fr 4fr;
+        }
+
+        #main {
+            width: 95%;
+        }
+
+        .footer {
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 900px) {
+        #Interview, #interview-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        #Interview, #interview-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    @media (max-width: 400px) {
+        #Interview #grid-container {
+            grid-template-columns: 1fr;
+        }
+        #header {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+
+        #nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #main {
+            padding: 40px 20px;
+        }
+
+        .footer {
+            height: auto;
+        }
+
+        #footer-top {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    @media (max-width: 350px) {
+        #nav a {
+            font-size: 16px;
+        }
+
+        #footer-right a {
+            font-size: 1rem;
+        }
+
+        #footer-top {
+            padding: 20px;
+        }
+    }
+    </style>
+</body>
+</html>
