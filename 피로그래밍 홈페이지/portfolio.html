@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://piro-homepage-bucket.s3.ap-northeast-2.amazonaws.com/images/favicons/favicon-16x16.png">
+    <title>피로그래밍</title>
+    <style>
+        :root {
+    --black: #000;
+    --bg-3: rgb(222, 222, 222);
+    --bg-5: rgba(236, 236, 236, 0.466);
+    --bg-gray: #333333;
+    --scroll-bar-gray: #222222;
+    --line-gray: #606060;
+    --white: #fff;
+    --subtext-gray: #c6c6c6;
+    --green-1: #0bec12;
+    --green-2: rgba(73, 191, 77, 0.8);
+    --green-3: rgba(73, 191, 77, 0.6);
+    --blue: #2188b6;
+    --red: #c54422;
+    --badge-green: #35a67b;
+    --hero: 8rem;
+    --heading1: 3.8rem;
+    --heading2: 2.8rem;
+    --heading3: 2.2rem;
+    --subheading: 1.8rem;
+    --body1: 1.6rem;
+    --body2: 1.4rem;
+    --caption: 1.2rem;
+    --weight1: 400;
+    --weight2: 500;
+    --weight3: 700;
+    --offset: 40px;
+    --gutter: 16px;
+    --border-r: 8px;
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --transition: 0.15s;
+    --header-height: 9rem;
+}
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-family: "Nexon", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+#wrap{
+    text-align: center;
+}
+#wrap-center{
+    position: relative;
+    justify-content: center;
+    width: min(1200px, 100%);
+    height: 1144px;
+    padding: 0 40px;
+    margin: auto;
+    border: 0;
+    background-color:yellow;
+}
+#header{
+    position: absolute;
+    display: grid;
+    vertical-align: center;
+    width: min(1200px, 100%);
+    height: 90px;
+    grid-template-columns: 0.5fr 5fr 4.5fr;
+    margin :0;
+    padding:0;
+    left:0;
+}
+#logo{
+    background-image: url('./logo.svg');
+    height: 40px;
+    width: 40px;
+    margin: 20px 0;
+    border: 0;
+}
+#nav ul{
+    list-style: none;
+    display: flex;
+}
+#nav li{
+    margin: 15px;
+}
+#nav a{
+    text-decoration: none;
+    font-weight: Bold ;
+    color : white;
+    font-size: 20px;
+    text-wrap: nowrap;
+}
+#nav li:nth-child(3) a{
+    color:#0bec12;
+}
+    </style>
+</head>
+
+
+<body>
+    <div id="wrap">
+        <div id="wrap-center">
+            <!--header-->
+            <div id="header">
+                <div id="logo">
+                </div>
+                <div></div>
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li> 
+                            <a href="#">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#">Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="#">Interview</a>
+                        </li>
+                        <li>
+                            <a href="#">Gallery</a>
+                        </li>
+                        <li>
+                            <a href="#">Recruit</a>
+                        </li>                    
+                    </ul>
+                </nav>                
+            </div>
+        
+            <!--main-->
+            <style>
+            </style>
+            <div id="main">
+                <div id="section">21기
+                    <span>20기<i>></i></span>
+                </div>
+                <div id="Portfolio">
+                    <ul>
+                        <li>HireHub</li>
+                        <li>Feel Buddy</li>
+                        <li>AAYO</li>
+                        <li>피로타임(PiroTime)</li>
+                        <li>Oddy</li>
+                        <li>동아리타임</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+            <style>
+                .footer{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 190px;
+                    background-color: var(--bg-gray);
+                    width: 100%;
+                    font-size: var(--body2);
+                    bottom: 0;
+                }
+                #footer-top{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 40px 40px;
+                    width: 100%;
+                    height: 110px;
+                }
+                #footer-left{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    /* justify-content: space-between; */
+                    gap :10px;
+                    /* font-size: 1rem; */
+                }   
+                .rule{
+                    text-align: left;
+                    font-size: 1rem;
+                    color: white;
+                    margin: 0;
+                }
+
+                .icon{
+                    display: flex;
+                    gap: 10px;
+                }
+                .img{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    background-color: black;
+                    position: relative;
+                }
+                .img img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                #mail p{
+                    text-align: left;
+                    font-size: 1rem;
+                    color:white;
+                    margin-top: 0;
+                }
+                #footer-right{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap : 10px;
+                }
+                #footer-right a{
+                    color: white;
+                    text-decoration: none;
+                    font-size: 1.3rem;
+                    position: relative;
+                }
+                #footer-right a::after{
+                content: "|";
+                color :white;
+                margin-left : 10px;
+                }
+                #footer-right a:last-child::after {
+                    content: ""; 
+                }
+                #footer-bottom{
+                opacity: 0.8;
+                font-size: var(--caption);
+                text-align: center;
+                padding: var(--gutter);
+                }
+                #footer-bottom span{
+                    color: white;
+                    font-size: 1rem;
+                }
+            </style>
+            <!--footer-->
+            <div class="footer">
+                <div id="footer-top">
+                    <div id="footer-left">
+                        <div class="rule">PIROGRAMMING 회칙 ></div>
+                        <div class="icon">
+
+                                <div class ="img">
+                                    <img src="https://piro-homepage-bucket.s3.ap-northeast-2.amazonaws.com/images/icons/kakao.svg" alt="kakao">
+                                </div>
+
+                                <div class ="img">
+                                    <img src="https://piro-homepage-bucket.s3.ap-northeast-2.amazonaws.com/images/icons/github.svg" alt="github">
+                                </div>
+
+                                <div class ="img">
+                                    <img src="https://piro-homepage-bucket.s3.ap-northeast-2.amazonaws.com/images/icons/instagram.svg" alt="instagram">
+                                </div>
+                        </div>
+                        <div id="mail">
+                            <p>pirogramming.official@gamil.com</p>
+                        </div>
+                    </div>
+                    <div id="footer-right">
+                        <a>Home</a>
+                        <a>About Us</a>
+                        <a>Portfolio</a>
+                        <a>Interview</a>
+                        <a>Recruit</a>
+                    </div>
+                </div>
+                <div id="footer-bottom">
+                    <span>Priogramming.2023 All rights reserved.</span>
+                </div>
+            </div>
+        
+    </div>
+    
+</body>
+</html>
