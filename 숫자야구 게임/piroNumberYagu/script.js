@@ -79,6 +79,23 @@ function check_numbers(){
         resetInput();
     }
 
+    //css 수정
+const elementStrikes = document.querySelectorAll('.strike');
+const elementsBalls = document.querySelectorAll('.ball');
+
+elementStrikes.forEach(strikeElement => {
+    strikeElement.style.width = '50px';
+    strikeElement.style.height = '50px';
+    strikeElement.style.borderRadius = '50%';
+});
+
+elementsBalls.forEach(ballElement => {
+    ballElement.style.width = '50px';
+    ballElement.style.height = '50px';
+    ballElement.style.borderRadius = '50%';
+});
+
+
     //시도 결과 출력
     if(strike===3){
         resetInput();
