@@ -20,10 +20,32 @@ function createHTMLString(item){
         </li>
     `;
 }
+
+function onButtonClick(event, items){
+    const dataset = event.target.dataset;
+    const key = dataset.key;
+    const value =dataset.value;
+
+    if(key == null || value == null){
+        return;
+    }
+    //key가 들어있을 때만 작동하게 만듦
+    displayItems(items.filter(item => item[key] === value))
+}
+
+
+
+function setEventListners(items){
+    const logo = document.querySelector('.logo');
+    const buttos = document.querySelector('.buttons');
+    logo.addEventListener('click',() => displayItems(items));
+    buttos.addEventListener('click', event => onButtonClick(event,items))
+}
+
 //main
 loadItems()
     .then(items => {
         displayItems(items);
-        // setEventListners(items)
+        setEventListners(items)
     })
 .catch(console.log)
