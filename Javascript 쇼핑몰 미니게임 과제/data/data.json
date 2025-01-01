@@ -2,46 +2,46 @@
     "items" : [
         {
         "type" : "tshirt", 
-        "gende" :"female", 
+        "gender" :"female", 
         "size" : "large", 
         "color": "pink", 
-        "image":"../img/pink_t.png"},
+        "image":"img/pink_t.png"},
         {
             "type" : "pants", 
-            "gende" :"male", 
+            "gender" :"male", 
             "size" : "small", 
             "color": "blue", 
-            "image":"../img/blue_p.png"},
+            "image":"img/blue_p.png"},
         {
             "type" : "pants", 
-            "gende" :"male", 
+            "gender" :"male", 
             "size" : "large", 
             "color": "yellow", 
-            "image":"../img/yellow_p.png"},
+            "image":"img/yellow_p.png"},
         {
             "type" : "skirt", 
-            "gende" :"female", 
+            "gender" :"female", 
             "size" : "small", 
             "color": "yellow", 
-            "image":"../img/yellow_s.png"},
+            "image":"img/yellow_s.png"},
         {
             "type" : "skirt", 
-            "gende" :"female", 
+            "gender" :"female", 
             "size" : "small", 
             "color": "blue", 
-            "image":"../img/blue_s.png"},
+            "image":"img/blue_s.png"},
         {
             "type" : "tshirt", 
-            "gende" :"male", 
+            "gender" :"male", 
             "size" : "large", 
             "color": "blue", 
-            "image":"../img/blue_t.png"},
+            "image":"img/blue_t.png"},
         {
             "type" : "tshirt", 
-            "gende" :"male", 
+            "gender" :"male", 
             "size" : "large", 
             "color": "yellow", 
-            "image":"../img/yellow_s.png"}
+            "image":"img/yellow_s.png"}
         
     ]
 }
