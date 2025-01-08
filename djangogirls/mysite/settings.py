@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-)!%fbi=a#-0b--ddc)w$5kc=gjn5_0kl4m!q(^1)9w%aq@8bpl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "blog", #*blog 라는 어플리케이션을 장고에 사용한다고 알려줌줌
 ]
 
 MIDDLEWARE = [
@@ -116,6 +117,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / 'static'  #*배포 환경에서 모든 정적 파일을 한 곳에 모아놓을 디렉터리 경로
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
