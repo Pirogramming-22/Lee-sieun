@@ -123,3 +123,5 @@ STATIC_ROOT = BASE_DIR / 'static'  #*배포 환경에서 모든 정적 파일을
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_URL = '/accounts/login/'  # 로그인 페이지 URL

@@ -1,9 +1,10 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 class Post(models.Model): #*models : Post가 장고 모델임을 알려줌 -> Post가 db에 저장되어야 함을 알게됨됨
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE) 
         #* casacade : 관계형 db의 "연쇄 삭제" => 부모가 삭제되면 관련된 자식 객체도 함께 삭제
     title = models.CharField(max_length=200)
     text = models.TextField()
