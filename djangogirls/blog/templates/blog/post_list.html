@@ -1,28 +1,13 @@
-{% load static %}   <!--최상단에 static 추가-->
-<html>
-    <head>
-        <title>Django Girls Blog</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-        <div class="page-header">
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </div>
+{% extends 'blog/base.html' %} <!--확장태그를 맨 위에 추가해서 두 템플릿 연결-->
 
-        <div class="content container">
-            <div class="row">
-                <div class = "col-md-8">
-                    {% for post in posts %}
-                    <div class = "post">
-                        <p> published : {{post.published_Date }}</p>
-                        <h1><a href="">{{post.title}}</a></h1>
-                        <p>{{post.text|linebreaksbr}}</p>   <!--|lindebreaksbr :  행이 바뀌면 문단으로 변환하라 (줄바꿈을 <br> 태그로 변환)-->
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+{% block content %}
+    {% for post in posts %}
+    <div class = "post">
+        <div class="date">
+            {{post.published_Date }}
+        </div>               
+        <h1><a href="">{{post.title}}</a></h1>
+        <p>{{post.text|linebreaksbr}}</p>   <!--|lindebreaksbr :  행이 바뀌면 문단으로 변환하라 (줄바꿈을 <br> 태그로 변환)-->
+    </div>
+    {% endfor %}
+{% endblock %}
