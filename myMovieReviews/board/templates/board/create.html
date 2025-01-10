@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>My Movie reviews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body{
+            height: 100%;
+            margin:0;
+            font-size: 15px;
+            font-weight: 550;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        header{
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            border-bottom: 1px solid gray;
+        }
+        a{
+            margin: 0 60px;
+            text-decoration: 0;
+            color: black;
+            cursor: pointer;
+            
+        }
+        .main_logo{
+            font-size: 30px;
+        }
+        .main_logo strong{
+            color: rgb(212, 42, 110);
+            font-weight: 600;
+        }
+        .add_review{
+            color: gray;
+            cursor: pointer;
+        }
+        .container{
+            background-color: rgb(235, 234, 233);
+            width: 70%;
+            height: 90vh;
+            margin: 15px auto;
+            border-radius: 10px;
+            position: relative;
+        }
+        .in_header{
+            font-size: 30px;
+            position: relative;
+            height: 12%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .in_header::after {
+            content: "";
+            position: absolute;
+            bottom: 0; /* 아래쪽에 배치 */
+            left: 50%; /* 중앙 정렬 시작 */
+            transform: translateX(-50%); /* 정확히 중앙으로 이동 */
+            width: 75%; /* 원하는 너비 설정 */
+            border-bottom: 2px solid rgb(197, 194, 194); /* 보더 스타일 */
+        }
+
+        .in_header h3{
+            text-align: center;
+            margin: 20px 0;
+        }
+        .in_header b{
+            color: rgb(212, 42, 110);
+        }
+        .review_detail{
+            width: 75%;
+            margin: auto;
+            margin-top: 50px;
+            font-size: 23px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 30px;
+        }
+        .form_control{
+            margin-bottom: 20px;
+            display: flex;
+            gap:10px;
+        }
+
+        #form_total{
+            width: 100%;
+        }
+
+        #review_control{
+            display: block;
+        }
+        #review_control label{
+            line-height: 40px;
+        }
+        textarea {
+            width: 100%; 
+            height: auto; 
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .in_btn{
+            display: flex;
+            justify-content: flex-end;
+        }
+        .in_save{
+            margin-top: 50px;
+            border-radius: 5px;
+            border-color:  rgb(234, 234, 234);
+            background-color: rgb(255, 255, 255);
+            width: 80px;
+            height: 40px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{% url 'board:board_list' %}" class="main_logo">my<strong>Movie</strong>reviews</a>
+        <a href="{% url 'board:board_create' %}" class="add_review">Add a New review</a>
+    </header>
+    <div class="container">
+        <div class="in_header">
+            <h3><b>Movie</b>review🍿</h3>
+        </div>
+        <div class="review_detail">
+            <form action="{%url 'board:board_create' %}" method="post" id="form_total">
+                {% csrf_token %}
+                <div class="form_control">
+                    <label fot="title">제목:</label>
+                    <input type="text" id="title" name="title" >
+                </div>
+
+                <div class="form_control">
+                    <label fot="releaseYear">개봉년도:</label>
+                    <input type="number" id="releaseYear" name="releaseYear" >
+                </div>
+                <div class="form_control">
+                    <label fot="genre">장르:</label>
+                    <select id="genre" name="genre">
+                        <option value="">-----</option>
+                        <option value="action">액션</option>
+                        <option value="drama">로맨스</option>
+                        <option value="comedy">코미디</option>
+                        <option value="horror">공포</option>
+                        <option value="sci-fi">SF</option>
+                        <option value="ani">애니메이션</option>
+                        <option value="criticism">사회 비판</option>
+                    </select>
+                </div>
+
+                <div class="form_control">
+                    <label fot="rating">별점:</label>
+                    <input type="number" id="rating" name="rating" min="0" max="10" step="0.1">
+                </div>
+                
+                <div class="form_control">
+                    <label fot="runningTime">러닝타임:</label>
+                    <input type="text" id="runningTime" name="runningTime" >
+                </div>
+                
+                <div class="form_control" id="review_control" >
+                    <label for="review" >리뷰:</label>
+                    <textarea id="review" name="review" rows="10" ></textarea>
+                </div>
+
+                <div class="form_control">
+                    <label fot="producer">감독:</label>
+                    <input type="text" id="producer" name="producer" >
+                </div>
+
+                <div class="form_control">
+                    <label fot="actors">배우:</label>
+                    <input type="text" id="actors" name="actors" >
+                </div>
+                <a class="in_btn"><button type="submit" class="in_save">Save</button></a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

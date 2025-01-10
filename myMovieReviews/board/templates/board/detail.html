@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie reviews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body{
+            height: 100%;
+            margin:0;
+            font-size: 18px;
+            font-weight: 550;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        header{
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            border-bottom: 1px solid gray;
+        }
+        a{
+            margin: 0 60px;
+            text-decoration: 0;
+            color: black;
+            cursor: pointer;
+            
+        }
+        .main_logo{
+            font-size: 30px;
+        }
+        .main_logo strong{
+            color: rgb(212, 42, 110);
+            font-weight: 600;
+        }
+        .add_review{
+            color: gray;
+            cursor: pointer;
+        }
+        .detail_container{
+            width: 90%;
+            margin: 30px auto;
+        }
+        .container_header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .container_header h2{
+            font-size: 35px;
+            font-weight: 700;
+            margin-left: 20px;
+            color: rgb(212, 42, 110);
+            cursor: pointer;
+        }
+        .sub_edit{
+            display: flex;
+            flex-direction: row;
+        }
+        .container_header div a{
+            margin: 0 10px;
+            color: gray;
+            cursor: pointer;
+        }
+        .movie_info{
+            background-color: rgb(235, 234, 233);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 30px;
+        }
+        .movie_info img{
+            width: 200px;
+            height: 300px;
+            background-color: black;
+            margin: 10px 20px;
+        }
+        .movie_details{
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            color: gray;
+            line-height: 20px;
+        }
+        .movie_review{
+            background-color: rgb(235, 234, 233);
+            border-radius: 5px;
+            font-weight: 500;
+            line-height: 20px;
+        }
+        .movie_review p{
+            padding: 15px 10px 30px 10px;
+            line-height: 30px;
+        }
+        .movie_details strong{
+            color: black;
+        }
+        .delete_btn{
+            all:unset;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{% url 'board:board_list' %}" class="main_logo">my<strong>Movie</strong>reviews</a>
+        <a href="{% url 'board:board_create' %}" class="add_review">Add a New review</a>
+    </header>
+    <div class="detail_container">
+        <div class="container_header">
+            <h2>{{board.title}}</h2>
+            <div class="sub_edit">
+                <div><a href="{% url 'board:board_update' board.id%}">수정</a></div>
+                <div>
+                    <form action="{% url 'board:board_delete' board.pk%}" method="post">
+                        {% csrf_token %}
+                        <a>
+                            <button type="submit" class="delete_btn">삭제</button>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="movie_info">
+            <img>
+            <div class="movie_details"> 
+                <p>개봉년도: <strong>{{ board.releaseYear }}</strong></p>
+                <p>감독: <strong>{{ board.producer }}</strong></p>
+                <p>주연: <strong>{{ board.actors }}</strong></p>
+                <p>장르: <strong>{{ board.genre }}</strong></p>
+                <p>별점: <strong>{{ board.rating }}</strong></p>
+                <p>러닝타임: <strong>{{ board.runningTime }}</strong></p>
+            </div>
+        </div>
+        <div class="movie_review"><p>{{board.review}}</p></div>
+    </div>
+    
+</body>
+</html>
