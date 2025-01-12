@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie reviews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body{
+            height: 100%;
+            margin:0;
+            font-size: 15px;
+            font-weight: 550;
+            font-family: 'Noto Sans KR', sans-serif;;
+        }
+        header{
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            border-bottom: 1px solid gray;
+        }
+        a{
+            margin: 0 60px;
+            text-decoration: 0;
+            color: black;
+            cursor: pointer;
+            
+        }
+        .main_logo{
+            font-size: 30px;
+        }
+        .main_logo strong{
+            color: rgb(212, 42, 110);
+            font-weight: 600;
+        }
+        .add_review{
+            color: gray;
+            cursor: pointer;
+        }
+
+        .container{
+            height: 80vh;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            gap: 30px;
+            list-style: none;
+            margin: auto;
+            padding: 0;
+            overflow-x: auto;
+            height: 100%;
+            width: calc(4 * 300px + 3 * 30px);
+        }
+        
+        li{
+            flex: 0 0 300px;
+            background-color: rgb(235, 234, 233);
+            height: 70%;
+            border-radius: 5px;
+            scroll-snap-align: start; 
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        ul::-webkit-scrollbar {
+            height: 10px;
+            background-color: rgb(235, 234, 233);
+            border-radius: 5px;
+        }
+
+        ul::-webkit-scrollbar-thumb {
+            background-color: rgb(212, 42, 110);
+            border-radius: 5px;
+        }
+        
+        img{
+            width: 234px;
+            height: 270px;
+            margin: 10px 20px 5px 30px;
+            background-color: black;
+            ;
+        }
+        .title,.detail{
+            width: 100%;
+            margin-left: 25px;
+            margin-bottom: 10px;
+        }
+        
+        .title >a{
+            font-size: 25px;
+            color: rgb(212, 42, 110);
+            margin: 0;
+        }
+        .detail{
+            line-height: 20px;
+            color:black;
+        }
+        .detail  strong{
+            color: rgb(212, 42, 110);
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="{% url 'board:board_list' %}" class="main_logo">my<strong>Movie</strong>reviews</a>
+        <a href="{% url 'board:board_create' %}" class="add_review">Add a New review</a>
+    </header>
+    <div class="container">
+        <ul>
+            {% for board in boards %}
+            <li>
+                <img >
+                <h3 class="title">
+                    <a href="{% url 'board:board_detail' board.id %}">{{board.title}}</a></h3>
+                <div class="detail">
+                    <p>개봉년도<strong> {{board.releaseYear}}</strong></p>
+                    <p>장르<strong> {{board.genre}}</strong></p>
+                    <p>별점<strong> {{board.rating}}</strong></p>
+                </div>
+            </li>
+            {% empty %}
+            <p>nothing...</p>
+            {% endfor %}
+            
+        </ul>
+    </div>
+</body>
+</html>
