@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'ideas/css/style.css' %}">
+    {%block head%}
+        <title>idea_list</title>
+    {% endblock %}
+</head>
+<body>
+    {%block content%}
+        <div class="main_top">
+            <h3>Idea List</h3>
+            <p>나의 아이디어를 잊지 말고 기록해보자!</p>
+        </div>
+        <div class='order'>
+            <form method="get" action="{% url 'ideas:list' %}" class="dropdown-form">
+                <label for="order_by"></label>
+                <select id="order_by" name="order_by" onchange="this.form.submit()">
+                    <option value="">--정렬기준--</option>
+                    <option value="likes" {% if order_by == "likes" %}selected{% endif %}>찜하기순</option>
+                    <option value="created_at" {% if order_by == "created_at" %}selected{% endif %}>최신순</option>
+                    <option value="-created_at" {% if order_by == "-created_at" %}selected{% endif %}>등록순 (오래된 순)</option>
+                    <option value="title" {% if order_by == "title" %}selected{% endif %}>이름순</option>
+                </select>
+            </form>
+            
+        </div>
+        <ul>
+            {% for idea in ideas%}
+            <li>
+                {% if idea.photo != null and idea.photo.url != "" %}
+                    <img src="{{ idea.photo.url }}" alt="대체 텍스트" />     
+                {% else %}
+                    <img src="{% static 'ideas/img/no_img.png' %}" alt="대체 텍스트" />     
+                {% endif %}
+                <div class="total">
+                    <a class="list_title" href = "{%url 'ideas:detail' idea.pk%}">{{idea.title}}</a>
+                    <div class="title-star-container">
+                        <form method="post" action="{% url 'ideas:toggle_star' idea.pk %}">
+                            {% csrf_token %}
+                            <input
+                                type="checkbox"
+                                id="star_checkbox_{{ idea.pk }}"
+                                name="is_starred"
+                                {% if idea.is_starred %}checked{% endif %}
+                                onchange="this.form.submit()"
+                            >
+                            <label for="star_checkbox_{{ idea.pk }}" class="star">
+                                <svg class="star_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div class="list_in">
+                    <p>예상 개발 툴 : {{idea.tool}}</p>
+                    <p>아이디어 관심도 : {{idea.interest_rate}}</p>
+                </div>
+            </li>
+            {% endfor %}
+
+        </ul>
+    {% endblock %}
+        
+</body>
+</html>
