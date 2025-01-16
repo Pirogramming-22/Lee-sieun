@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'ideas/css/style.css' %}">
+    {%block head%}
+        <title>devTool_list</title>
+    {% endblock %}
+</head>
+<body>
+    {%block content%}
+        <div class="main_top">
+            <h3>DevTool List</h3>
+            <p>개발툴 목록 페이지입니다. 자신이 사용가능한 개발툴의 목록을 확인해보세요.</p>
+        </div>
+        <div id="dev_list">
+            {% for dev in devTool%}
+            <div class="list_detail">
+                <a class="list_name" href = "{%url 'devTool:detail' dev.pk%}">{{dev.name}}</a>
+                    <p class="list_kind">{{dev.kind}}</p>
+                    <p class="list_content">{{dev.content}}</p>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    {% endblock %}
+        
+</body>
+</html>

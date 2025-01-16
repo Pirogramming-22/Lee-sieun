@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'ideas/css/style.css' %}">
+    {%block head%}
+        <title>devTool_detail</title>
+    {% endblock %}
+</head>
+<body>
+    {%block content%}
+    <div class="main_top">
+        <h3>DevTool Detail</h3>
+        <p>개발툴 세부내용 페이지입니다. 자신이 다룰 수 있는 개발툴에 대한 상세내용을 확인해 보아요!</p>
+    </div>
+
+    <div class ="detail_container">    
+        <div class="tool_info">
+            <h2>{{devTool.name}}</h2>
+            <div class="tool_ex">
+                <p>{{devTool.kind}}</p>
+                <p>{{devTool.content}}</p>
+            </div>
+        </div>
+        <div class="tool_list">
+            <b>&gt;만들 수 있는 SW 목록</b>
+            <p>첫번쨰</p>
+            <p>첫번쨰</p>
+        </div>
+    </div>
+
+
+    <div class="btns">
+        <button class="btn_del" onclick="location.href='{% url 'devTool:delete' devTool.pk %}'">삭제</button>
+        <button class="btn_list" onclick="location.href='{% url 'devTool:list' %}'">목록</button>
+        <button class="btn_update" onclick="location.href='{% url 'devTool:update' devTool.pk %}'">수정</button>
+    </div>
+    {% endblock %}
+        
+</body>
+</html>
