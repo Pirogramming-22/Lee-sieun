@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="post-list">
+    {% for post  in posts %}
+    <div class="post post_container" id="post-{{ post.id }}">
+
+        <div class="card_body">
+            {% if post.photo %}
+            <img src="{{ post.photo.url }}" alt="{{ post.title }}" class="post-image">
+            {% else %}
+            <img src="{% static 'images/default_image.jpg' %}" alt="Default Image" class="post-image">
+            {% endif %}
+            
+            <h2 class="post-title">{{ post.title }}</h2>
+            <p class="post-content">{{ post.content }}</p>
+            <p>Likes: <span id="like-count-{{ post.id }}">{{ post.like }}</span></p>
+            <button class="btn btn-primary like-btn" data-post-id="{{ post.id }}">Like</button>
+        </div>
+
+        <div class="comments">
+            <h3>Comments</h3>
+            <ul id="comment-list-{{ post.id }}">
+                {% for comment in post.comments.all %}
+                <li  class="comment_ctx" id="comment-{{ comment.id }}">
+                    {{ comment.author }}: {{ comment.content }}
+                    <button class="delete-comment" data-comment-id="{{ comment.id }}">Delete</button>
+                </li>
+                {% endfor %}
+            </ul>
+            <form class="comment-form" data-post-id="{{ post.id }}">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit">Add Comment</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
+
+{% block extra %}
+<script>
+
+    document.querySelectorAll('.like-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const postId = this.dataset.postId;
+            updateLike(postId);
+        });
+    });
+    
+    function updateLike(postId) {
+        const url = "{% url 'post:like_ajax' %}";
+        const csrftoken = '{{ csrf_token }}';
+    
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+            },
+            body: JSON.stringify({ id: postId }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const likeCount = document.getElementById(`like-count-${postId}`);
+                likeCount.textContent = data.likes;
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    
+document.querySelectorAll('.comment-form').forEach(form => {
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const postId = this.dataset.postId;
+    const formData = new FormData(this);
+    
+    fetch(`/comment/add/${postId}/`, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const commentList = document.getElementById(`comment-list-${postId}`);
+            const newComment = document.createElement('li');
+            newComment.id = `comment-${data.id}`;
+            newComment.innerHTML = `${data.author}: ${data.content} <button class="delete-comment" data-comment-id="${data.id}">Delete</button>`;
+            commentList.appendChild(newComment);
+            this.reset();
+        }
+    });
+});
+});
+
+document.addEventListener('click', function(e) {
+if (e.target.classList.contains('delete-comment')) {
+    const commentId = e.target.dataset.commentId;
+    fetch(`/comment/delete/${commentId}/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById(`comment-${commentId}`).remove();
+        }
+    });
+}
+});
+
+// 기존의 like 버튼 관련 JavaScript 코드는 그대로 유지
+</script>
+{% endblock %}
